@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -39,7 +40,6 @@ public class OrderService {
 
     public String getCurrentPrice(String stockCode) {
         String token = tokenLoader.loadToken();
-        System.out.println("Token: " + token);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("authorization", "Bearer " + token);
@@ -91,5 +91,7 @@ public class OrderService {
 
 //        return response.getBody();
     }
+
+
 }
 
